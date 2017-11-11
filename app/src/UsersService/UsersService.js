@@ -25,6 +25,14 @@ angular
                     method: 'DELETE',
                     url: 'https://jsonplaceholder.typicode.com/users/' + userId
                 });
+            },
+
+            updateUser: function(userId, userData) {
+							return $http({
+								method: 'PUT',
+								url: 'https://jsonplaceholder.typicode.com/users/' + userId,
+								data: userData
+							});
             }
 
         }

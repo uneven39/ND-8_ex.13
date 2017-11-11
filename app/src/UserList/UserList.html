@@ -2,6 +2,11 @@
     <div class="col-md-8">
 
         <div class="list-group">
+            <span ng-if="!users"
+                  class="text-info">
+                <i class="glyphicon glyphicon-hourglass"></i>
+                Загрузка...
+            </span>
             <a href="#!/users/{{singleUser.id }}" class="list-group-item" ng-repeat="singleUser in users">
 
                 <h4>
@@ -19,6 +24,11 @@
     <div class="col-md-4">
 
         <div class="list-group">
+            <span ng-if="!posts"
+                  class="text-info">
+                <i class="glyphicon glyphicon-hourglass"></i>
+                Загрузка...
+            </span>
             <div class="list-group-item" ng-repeat="singlePost in posts">
 
                 <p>
