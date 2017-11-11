@@ -1,16 +1,21 @@
 'use strict';
 
-userApp.controller('EditUserCtrl', function ($scope, UsersService) {
+userApp.controller('EditUserCtrl', function ($scope, $routeParams, UsersService) {
   $scope.currentUser = {};
+  $scope.currentUserId = $routeParams['userId'];
+	$scope.userLoaded = false;
 
-  $scope.editUser = function (user) {
-    // $scope.creationSuccess = false
-		//
-    // UsersService.createUser(myUser).then(function (response) {
-    //   $scope.newUser = {}
-		//
-    //   $scope.newUserId = response.data.id
-    //   $scope.creationSuccess = true
-    // })
+	UsersService.getUser($scope.currentUserId).then(function (response) {
+		$scope.currentUser = response.data;
+		$scope.userLoaded = true;
+	});
+
+  $scope.updateUser = function (currentUser) {
+    $scope.updateSuccess = false;
+
+    UsersService.updateUser($scope.currentUserId, currentUser).then(function (response) {
+      $scope.currentUser = response.data;
+      $scope.updateSuccess = true;
+    })
   }
 });
